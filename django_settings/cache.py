@@ -17,6 +17,7 @@ config = lazyimport({
     'DJANGO_SETTINGS_TIMEOUT': 'django_settings.conf',
 })
 
+from django.conf import settings
 
 class KeyMaker(object):
     def __init__(self, prefix):
@@ -70,7 +71,8 @@ class MethodProxy(object):
         return self.cache.get(key)
 
     def _cache_set(self, key, origin_value, timeout=None):
-        timeout = timeout or config.DJANGO_SETTINGS_TIMEOUT
+        #timeout = timeout or config.DJANGO_SETTINGS_TIMEOUT
+        timeout = timeout or settings.DJANGO_SETTINGS_TIMEOUT
         self.cache.set(key, origin_value, timeout=timeout)
         return origin_value
 
