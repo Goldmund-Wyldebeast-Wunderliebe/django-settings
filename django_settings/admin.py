@@ -42,9 +42,9 @@ class SettingAdmin(admin.ModelAdmin):
     form = forms.SettingForm
     list_display = ('name', 'setting_type', get_setting_value)
     search_fields = ('name', 'setting_type__name')
-    actions = [
-        clear_cache
-    ]
+    #actions = [
+    #    clear_cache
+    #]
 
     def get_setting_model(self, obj, request):
         if obj:
